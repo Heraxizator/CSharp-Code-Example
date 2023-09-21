@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:custom_controls="clr-namespace:DvgupsMobile.CustomControls" 
+             xmlns:CustomControls="clr-namespace:DvgupsMobile.Views.Controls"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundColor="White"
+             Title="{Binding Title}"
+             x:Class="DvgupsMobile.Views.Jornal.ElectronStatement.StatementListPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout 
+                    IsVisible="{Binding Failed}"
+                    Padding="40,120,40,250"
+                    BackgroundColor="White"
+                    HorizontalOptions="Fill"
+                    Spacing="10"
+                    VerticalOptions="Fill">
+
+                <Label
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="50"
+                        HorizontalOptions="Center"
+                        Text="&#xf01ab;"
+                        TextColor="#cbcbcb"
+                        VerticalOptions="Center" />
+                <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        Text="Не удалось загрузить данные"
+                        TextColor="#cbcbcb" />
+                <Label
+                        Margin="10,0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text="Попробовать ещё раз?"
+                        TextColor="#9940a028">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoadData}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+            
+            <StackLayout
+                Margin="10"
+                IsVisible="{Binding Loading}">
+                <custom_controls:ShadowFrame
+                    Margin="10,30,10,10"
+                    BackgroundColor="White"
+                    BorderColor="#f0f0f0"
+                    CornerRadius="35">
+                    <StackLayout>
+
+                            <BoxView
+                        Margin="0,10,0,0"
+                        CornerRadius="15"
+                        HeightRequest="45"
+                        HorizontalOptions="End"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+                            <BoxView
+                        CornerRadius="15"
+                        HeightRequest="45"
+                        HorizontalOptions="Start"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+                            <BoxView
+                        Margin="0,10,0,0"
+                        CornerRadius="15"
+                        HeightRequest="45"
+                        HorizontalOptions="End"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+                            <BoxView
+                        CornerRadius="15"
+                        HeightRequest="45"
+                        HorizontalOptions="Start"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+                            <BoxView
+                        Margin="0,10,0,0"
+                        CornerRadius="15"
+                        HeightRequest="45"
+                        HorizontalOptions="End"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+                            <BoxView
+                        CornerRadius="15"
+                        HeightRequest="45"
+                        HorizontalOptions="Start"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+
+                    </StackLayout>
+                </custom_controls:ShadowFrame>
+
+                <custom_controls:ShadowFrame
+                Margin="10,0,10,0"
+                BackgroundColor="White"
+                BorderColor="#f0f0f0"
+                CornerRadius="35">
+
+                    <BoxView
+                        Margin="0,10,0,0"
+                        CornerRadius="25"
+                        HeightRequest="300"
+                        WidthRequest="400"
+                        Color="#f0f0f0" />
+
+                </custom_controls:ShadowFrame>
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout 
+                IsVisible="{Binding Loaded}"
+                Margin="15">
+                    <StackLayout>
+
+                        <custom_controls:ShadowFrame
+                        Margin="10"
+                        CornerRadius="35">
+
+                            <StackLayout>
+                                <Label 
+                            Text="Данные"
+                            FontSize="19"
+                            TextColor="Black"
+                            Margin="0, 0, 0, 5"/>
+
+                                <StackLayout>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Направление действительно по"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Period}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Форма промежуточной аттестации"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label 
+                                    Text="{Binding AccountingType}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Номер зачётной книжки"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Number}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Дисциплина"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Discipline}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Преподаватель"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Teacher}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Студент"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Student}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Учебный год"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Year}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Семестр"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Term}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                    <Label
+                                    FontSize="16"
+                                    Text="Группа"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                    <Label
+                                    FontSize="16"
+                                    Text="{Binding Group}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </custom_controls:ShadowFrame>
+
+                        <custom_controls:ShadowFrame
+                        Margin="10"
+                        BackgroundColor="White"
+                        CornerRadius="35">
+
+                            <StackLayout>
+
+                                <Label 
+                                Text="Форма"
+                                TextColor="Black"
+                                FontSize="18"/>
+
+                                <Frame
+                                BorderColor="{StaticResource MainColorGray}"
+                                CornerRadius="25"
+                                HeightRequest="60"
+                                Margin="0, 15, 0, 10"       
+                                Padding="10, 0, 10, 0" >
+
+                                    <custom_controls:BorderlessPicker
+                                    Title="Оценка"
+                                    FontAttributes="None"
+                                    FontSize="16"
+                                    ItemsSource="{Binding MarkValues}"
+                                    SelectedItem="{Binding MarkValue}"/>
+                                </Frame>
+
+                                <CustomControls:BorderlessDatePickerControl
+                                Margin="0,5,0,10"
+                                Date="{Binding DateValue}"
+                                PlaceholderText="Дата" />
+
+                                <Button
+                                BackgroundColor="White"
+                                CornerRadius="35"
+                                Text="Сохранить"
+                                HeightRequest="45"
+                                Command="{Binding UpdateData}"
+                                TextColor="Black" />
+
+                            </StackLayout>
+
+                        </custom_controls:ShadowFrame>
+
+                    </StackLayout>
+
+                    <Button
+                Margin="15"
+                BackgroundColor="{StaticResource MainColorGreen}"
+                CornerRadius="35"
+                Text="Подтвердить"
+                HeightRequest="45"
+                TextColor="White" />
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

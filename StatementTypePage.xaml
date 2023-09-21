@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:CustomControls="clr-namespace:DvgupsMobile.Views.Controls" 
+             xmlns:custom_controls="clr-namespace:DvgupsMobile.CustomControls"
+             x:Class="DvgupsMobile.Views.Jornal.ElectronStatement.StatementTypePage"
+             Title="Электронная ведомость"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="True">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout IsVisible="{Binding Loading}">
+                <custom_controls:ShadowFrame
+                    Margin="15,10,15,10"
+                    BackgroundColor="White"
+                    BorderColor="#f0f0f0"
+                    CornerRadius="25">
+                    <StackLayout>
+
+                        <BoxView
+                            Margin="0,0,0,15"
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="End"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+
+                        <BoxView
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="Start"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+
+                        <BoxView
+                            Margin="0,0,0,15"
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="End"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+                        <BoxView
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="Start"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+
+                    </StackLayout>
+                </custom_controls:ShadowFrame>
+            </StackLayout>
+
+            <StackLayout 
+                IsVisible="{Binding Loaded}"
+                BackgroundColor="White">
+                <CustomControls:BorderlessEntryControl
+                Margin="15,5,15,10"
+                EntryText="{Binding TextEntered}"
+                PropertyChanged="BorderlessEntryControl_PropertyChanged"
+                HeightRequest="60"
+                IsValid="True"
+                PlaceholderText="Тип" />
+
+                <StackLayout Margin="15, 0, 15, 0">
+                    <ListView
+                    BackgroundColor="White"
+                    ItemTapped="ListView_ItemTapped"
+                    ItemsSource="{Binding SelectedTypeItems}"
+                    SelectionMode="None"
+                    SeparatorVisibility="None"
+                    HasUnevenRows="True"
+                    HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Never">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout 
+                                        Orientation="Horizontal"
+                                        Padding="0, 10, 0, 10">
+                                        <StackLayout>
+                                            <Label 
+                                                Text="{Binding Name}"
+                                                TextColor="Black"
+                                                FontSize="16"
+                                                Padding="0"
+                                                Margin="0"
+                                                HorizontalOptions="Start"
+                                                HorizontalTextAlignment="Start"/>
+                                            <Label
+                                                Text="{Binding Describtion}"
+                                                TextColor="{StaticResource MainColorGray}"
+                                                FontSize="16"
+                                                Padding="0"
+                                                Margin="0"
+                                                HorizontalOptions="Start"
+                                                HorizontalTextAlignment="Start"/>
+                                        </StackLayout>
+                                            
+                                        <StackLayout 
+                                            IsVisible="{Binding IsBegunok}"
+                                            HorizontalOptions="EndAndExpand">
+                                            <Label 
+                                                Text="{Binding Text}"
+                                                TextColor="{StaticResource MainColorGreen}"
+                                                FontSize="16"
+                                                Padding="0"
+                                                Margin="0"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="CenterAndExpand"
+                                                HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout 
+                    IsVisible="{Binding Failed}"
+                    Padding="40,120,40,0"
+                    BackgroundColor="White"
+                    HorizontalOptions="Fill"
+                    Spacing="10"
+                    VerticalOptions="Fill">
+
+                <Label
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="50"
+                        HorizontalOptions="Center"
+                        Text="&#xf01ab;"
+                        TextColor="#cbcbcb"
+                        VerticalOptions="Center" />
+                <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        Text="Не удалось загрузить данные"
+                        TextColor="#cbcbcb" />
+                <Label
+                        Margin="10,0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text="Попробовать ещё раз?"
+                        TextColor="#9940a028">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Reload}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

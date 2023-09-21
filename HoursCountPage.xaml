@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:custom_controls="clr-namespace:DvgupsMobile.CustomControls" 
+             xmlns:CustomControls="clr-namespace:DvgupsMobile.Views.Controls"
+             x:Class="DvgupsMobile.Views.Jornal.ElectronStatement.HoursCountPage"
+             Title="Электронная ведомость"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="True">
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout IsVisible="{Binding Loading}">
+                <custom_controls:ShadowFrame
+                    Margin="15,10,15,10"
+                    BackgroundColor="White"
+                    BorderColor="#f0f0f0"
+                    CornerRadius="25">
+                    <StackLayout>
+
+                        <BoxView
+                            Margin="0,0,0,15"
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="End"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+
+                        <BoxView
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="Start"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+
+                        <BoxView
+                            Margin="0,0,0,15"
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="End"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+                        <BoxView
+                            CornerRadius="15"
+                            HeightRequest="45"
+                            HorizontalOptions="Start"
+                            WidthRequest="400"
+                            Color="#f0f0f0" />
+
+                    </StackLayout>
+                </custom_controls:ShadowFrame>
+            </StackLayout>
+
+            <ScrollView 
+                x:Name="Scrollview"
+                IsVisible="{Binding Loaded}">
+                <StackLayout>
+
+                    <custom_controls:ShadowFrame
+                        Margin="15"
+                        CornerRadius="35">
+
+                        <StackLayout>
+                            <Label 
+                            Text="Данные"
+                            FontSize="19"
+                            TextColor="Black"
+                            Margin="0, 0, 0, 5"/>
+
+                            <StackLayout IsVisible="{Binding ListVisible}">
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Направление действительно по"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Period}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Форма промежуточной аттестации"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label 
+                                    Text="{Binding AccountingType}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Номер зачётной книжки"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Number}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Дисциплина"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Discipline}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Преподаватель"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Teacher}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Учебный год"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Year}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Семестр"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Term}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Группа"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Group}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding StnVisible}">
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Институт (факультет)"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label 
+                                    Text="{Binding Institute}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Форма аттестации"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding AccountingType}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Специальность"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Speciality}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Дисциплина"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Discipline}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Преподаватель"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Teacher}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Номер зачётной книжки"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label 
+                                    Text="{Binding Number}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Учебный год"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Year}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Группа"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Group}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Курс"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Course}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Семестр"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Term}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding GroupVisible}">
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Институт (факультет)"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label 
+                                    Text="{Binding Institute}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Тема курсового проекта"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding CourseWork}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Специальность"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Speciality}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Дисциплина"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Discipline}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Преподаватель"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Teacher}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Номер зачётной книжки"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label 
+                                    Text="{Binding Number}"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Учебный год"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Year}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Группа"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Group}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Курс"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Course}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                                <Label
+                                    FontSize="16"
+                                    Text="Семестр"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Term}"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="{StaticResource MainColorGray}"/>
+
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </custom_controls:ShadowFrame>
+
+                    <custom_controls:ShadowFrame
+                        IsVisible="{Binding Sleeping}"
+                        Margin="15"
+                        BackgroundColor="White"
+                        CornerRadius="35">
+
+                        <StackLayout>
+
+                            <Label 
+                        Text="Форма"
+                        TextColor="Black"
+                        FontSize="18"/>
+
+                            <CustomControls:BorderlessEntryControl
+                        Margin="0,5,0,10"
+                        EntryText="{Binding HoursCountEntered}"
+                        IsValid="True"
+                        PlaceholderText="Часов" />
+
+                            <CustomControls:BorderlessEntryControl
+                        Margin="0,5,0,10"
+                        EntryText="{Binding CreditsCountEntered}"
+                        IsValid="True"
+                        PlaceholderText="Зачётных единиц" />
+
+                            <Button
+                                IsEnabled="{Binding Enabled}"
+                                Clicked="Button_Clicked"
+                                BackgroundColor="White"
+                                CornerRadius="35"
+                                Text="Сохранить"
+                                HeightRequest="45"
+                                Command="{Binding UpdateData}"
+                                TextColor="Black" />
+
+                        </StackLayout>
+
+                    </custom_controls:ShadowFrame>
+
+                    <Button
+                        x:Name="Btn"
+                        Margin="15"
+                        BackgroundColor="{StaticResource MainColorGreen}"
+                        CornerRadius="35"
+                        Text="Продолжить"
+                        HeightRequest="45"
+                        Clicked="Button_Clicked_1"
+                        TextColor="White" />
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout
+                        IsVisible="{Binding Executing}"
+                        Margin="10">
+
+                <ActivityIndicator
+                        HeightRequest="75"
+                        HorizontalOptions="Center"
+                        IsRunning="True"
+                        VerticalOptions="Center"
+                        WidthRequest="75"
+                        Color="{StaticResource MainColorGreen}" />
+
+                <Label
+                            HorizontalOptions="Center"
+                            Margin="0, 5, 0, 0"
+                            Text="Пожалуйста, подождите"
+                            TextColor="{StaticResource MainColorGray}"
+                            FontSize="16"/>
+
+            </StackLayout>
+
+            <StackLayout 
+                    IsVisible="{Binding Failed}"
+                    Padding="40,120,40,0"
+                    BackgroundColor="White"
+                    HorizontalOptions="Fill"
+                    Spacing="10"
+                    VerticalOptions="Fill">
+
+                <Label
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="50"
+                        HorizontalOptions="Center"
+                        Text="&#xf01ab;"
+                        TextColor="#cbcbcb"
+                        VerticalOptions="Center" />
+                <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        Text="Не удалось загрузить данные"
+                        TextColor="#cbcbcb" />
+                <Label
+                        Margin="10,0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text="Попробовать ещё раз?"
+                        TextColor="#9940a028">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoadData}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
